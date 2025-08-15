@@ -6,8 +6,23 @@ const createExpense = async (payload) => {
 	return expense;
 };
 
-const getAllExpense = async () => {
-	const expenses = await Expense.find();
+const getAllExpense = async ({ category, startDate, endDate }) => {
+	const query = {};
+	if (category) {
+		query.category = category;
+	}
+
+	if (startDate || endDate) {
+		query.date = {};
+		if (startDate) {
+			query.date.$gte = new Date(startDate);
+		}
+		if (endDate) {
+			query.date.$lte = new Date(endDate);
+		}
+	}
+
+	const expenses = await Expense.find(query).sort({ createdAt: -1 });
 	const totalDocuments = await Expense.countDocuments();
 	const totalExpenses = await Expense.aggregate([
 		{
@@ -18,7 +33,9 @@ const getAllExpense = async () => {
 		},
 	]);
 
-	return { data: expenses, meta: { totalDocuments, totalExpenses } };
+	const total = totalExpenses[0] ? totalExpenses[0].total : 0;
+
+	return { data: expenses, meta: { totalDocuments, total } };
 };
 
 const updateExpense = async (id, payload) => {
