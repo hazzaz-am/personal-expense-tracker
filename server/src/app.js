@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const router  = require("./app/routes");
+const router = require("./app/routes");
 const { notFoundHandler } = require("./app/middlewares/notFoundHandler");
+const { globalErrorHandler } = require("./app/middlewares/globalErrorHandler");
 
 const app = express();
 
@@ -20,5 +21,5 @@ app.get("/", (_req, res) => {
 
 // error handler
 app.use(notFoundHandler);
-
+app.use(globalErrorHandler);
 module.exports = { app };
