@@ -1,9 +1,7 @@
 const { Router } = require("express");
-const { ExpensesRoutes } = require("../modules/expense/expense.route");
+const ExpensesRoutes = require("../modules/expense/expense.route");
 
-module.exports = {
-	router: Router(),
-};
+const router = Router();
 
 const moduleRoutes = [
 	{
@@ -15,3 +13,5 @@ const moduleRoutes = [
 moduleRoutes.forEach((route) => {
 	router.use(route.path, route.route);
 });
+
+module.exports = router;

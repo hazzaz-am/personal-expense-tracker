@@ -15,6 +15,4 @@ router.patch("/:id", ExpenseController.updateExpense);
 // /api/v1/expenses/:id
 router.delete("/:id", ExpenseController.deleteExpense);
 
-module.exports = {
-	ExpensesRoutes: router,
-};
+module.exports = router;

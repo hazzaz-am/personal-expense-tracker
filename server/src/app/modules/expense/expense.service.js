@@ -33,9 +33,9 @@ const getAllExpense = async ({ category, startDate, endDate }) => {
 		},
 	]);
 
-	const total = totalExpenses[0] ? totalExpenses[0].total : 0;
+	const totalAmount = totalExpenses[0] ? totalExpenses[0].total : 0;
 
-	return { data: expenses, meta: { totalDocuments, total } };
+	return { data: expenses, meta: { totalDocuments, totalAmount } };
 };
 
 const updateExpense = async (id, payload) => {
