@@ -8,13 +8,8 @@ const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(
-	cors({
-		origin: "*",
-		methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-		allowedHeaders: ["Content-Type", "Authorization"],
-	})
-);
+
+app.use(cors());
 
 // routes
 app.use("/api/v1", router);
@@ -28,4 +23,4 @@ app.get("/", (_req, res) => {
 // error handler
 app.use(notFoundHandler);
 app.use(globalErrorHandler);
-module.exports = { app };
+module.exports = app;
