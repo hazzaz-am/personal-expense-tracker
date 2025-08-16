@@ -33,7 +33,7 @@ Before running this application, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/hazzaz-am/personal-expense-tracker
 cd personal-expense-tracker
 ```
 
@@ -54,10 +54,6 @@ NODE_ENV=development
 
 # Database Configuration
 DATABASE_URL=mongodb://localhost:27017/expense-tracker
-
-# JWT Configuration (if using authentication)
-JWT_SECRET=your-super-secret-jwt-key
-JWT_EXPIRES_IN=7d
 ```
 
 **Environment Variables Explanation:**
@@ -68,21 +64,6 @@ JWT_EXPIRES_IN=7d
   - For local MongoDB: `mongodb://localhost:27017/expense-tracker`
   - For MongoDB Atlas: `mongodb+srv://username:password@cluster.mongodb.net/expense-tracker`
 
-### 4. Database Setup
-
-#### Option A: Local MongoDB
-
-1. Install MongoDB Community Edition from [MongoDB Download Center](https://www.mongodb.com/try/download/community)
-2. Start MongoDB service
-3. The database will be created automatically when the application connects
-
-#### Option B: MongoDB Atlas (Cloud)
-
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a new cluster
-3. Add your IP address to the whitelist
-4. Create a database user
-5. Get the connection string and update your `.env` file
 
 ## 🚀 Running the Application
 
@@ -135,7 +116,6 @@ Content-Type: application/json
   "amount": 75.50,
   "category": "Food",
   "date": "2025-08-16",
-  "description": "Weekly grocery shopping"
 }
 ```
 
@@ -153,7 +133,6 @@ Content-Type: application/json
 
 {
   "amount": 80.00,
-  "description": "Updated grocery amount"
 }
 ```
 
@@ -197,78 +176,6 @@ personal-expense-tracker/
 ├── vercel.json                     # Vercel deployment config
 └── README.md                       # Project documentation
 ```
-
-## 🔧 Available Scripts
-
-| Script         | Description                                            |
-| -------------- | ------------------------------------------------------ |
-| `pnpm start`   | Start the server in production mode                    |
-| `pnpm run dev` | Start the server in development mode with auto-restart |
-| `pnpm test`    | Run tests (not configured yet)                         |
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **MongoDB Connection Error**
-
-   - Ensure MongoDB is running (if using local installation)
-   - Check your `DATABASE_URL` in the `.env` file
-   - Verify network connectivity for MongoDB Atlas
-
-2. **Port Already in Use**
-
-   - Change the `PORT` in your `.env` file
-   - Or kill the process using the port: `npx kill-port 5000`
-
-3. **Environment Variables Not Loading**
-
-   - Ensure `.env` file is in the root directory
-   - Check that all required variables are present
-   - Restart the server after making changes
-
-4. **pnpm Command Not Found**
-   - Install pnpm globally: `npm install -g pnpm`
-   - Or use npm instead: `npm install` and `npm run dev`
-
-## 📦 Deployment
-
-### Vercel Deployment
-
-This project is configured for deployment on Vercel:
-
-1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
-2. Connect your repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy automatically on push to main branch
-
-### Environment Variables for Production
-
-Make sure to set these in your deployment platform:
-
-- `NODE_ENV=production`
-- `DATABASE_URL=<your-mongodb-atlas-url>`
-- `PORT=5000` (or as required by platform)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the ISC License.
-
-## 📞 Support
-
-If you encounter any issues or have questions, please:
-
-1. Check the troubleshooting section above
-2. Search existing issues in the repository
-3. Create a new issue with detailed information
 
 ---
 
